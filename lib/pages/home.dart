@@ -57,6 +57,19 @@ class HomePage extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return Container(
                     height: 100,
+                    decoration: BoxDecoration(
+                      color: popularDiets[index].boxIsSelected ?
+                       Colors.white : Colors.transparent,
+                      borderRadius: BorderRadius.circular(16),
+                      boxShadow: popularDiets[index].boxIsSelected ? [
+                        BoxShadow(
+                          color: const Color(0xff1D1617).withOpacity(0.07),
+                          offset: const Offset(0, 10),
+                          blurRadius: 40,
+                          spreadRadius: 0
+                        )
+                      ] : []
+                    ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
@@ -97,19 +110,6 @@ class HomePage extends StatelessWidget {
                         )
                       ],
                     ),
-                    decoration: BoxDecoration(
-                      color: popularDiets[index].boxIsSelected ?
-                       Colors.white : Colors.transparent,
-                      borderRadius: BorderRadius.circular(16),
-                      boxShadow: popularDiets[index].boxIsSelected ? [
-                        BoxShadow(
-                          color: const Color(0xff1D1617).withOpacity(0.07),
-                          offset: const Offset(0, 10),
-                          blurRadius: 40,
-                          spreadRadius: 0
-                        )
-                      ] : []
-                    ),
                   );
                 },
               )
@@ -137,7 +137,7 @@ class HomePage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 15,),
-            Container(
+            SizedBox(
               height: 240,
               child: ListView.separated(
                 itemBuilder: (context, index) {
@@ -162,7 +162,7 @@ class HomePage extends StatelessWidget {
                               ),
                             ),
                             Text(
-                              diets[index].level + ' | ' + diets[index].duration + ' | ' + diets[index].calorie,
+                              '${diets[index].level} | ${diets[index].duration} | ${diets[index].calorie}',
                               style: const TextStyle(
                                 color: Color(0xff7B6F72),
                                 fontSize: 13,
@@ -174,6 +174,15 @@ class HomePage extends StatelessWidget {
                         Container(
                           height: 45,
                           width: 130,
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              colors: [
+                                diets[index].viewIsSelected ? const Color(0xff9DCEFF) : Colors.transparent,
+                                diets[index].viewIsSelected ? const Color(0xff92A3FD) : Colors.transparent
+                              ]
+                            ),
+                            borderRadius: BorderRadius.circular(50)
+                          ),
                           child: Center(
                             child: Text(
                               'View',
@@ -183,15 +192,6 @@ class HomePage extends StatelessWidget {
                                 fontSize: 14
                               ),
                             ),
-                          ),
-                          decoration: BoxDecoration(
-                            gradient: LinearGradient(
-                              colors: [
-                                diets[index].viewIsSelected ? const Color(0xff9DCEFF) : Colors.transparent,
-                                diets[index].viewIsSelected ? const Color(0xff92A3FD) : Colors.transparent
-                              ]
-                            ),
-                            borderRadius: BorderRadius.circular(50)
                           ),
                         )
                       ],
@@ -227,7 +227,7 @@ class HomePage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 15,),
-            Container(
+            SizedBox(
               height: 120,
               child: ListView.separated(
                 itemCount: categories.length,
@@ -303,7 +303,7 @@ class HomePage extends StatelessWidget {
                 padding: const EdgeInsets.all(12),
                 child: SvgPicture.asset('assets/icons/Search.svg'),
               ),
-              suffixIcon: Container(
+              suffixIcon: SizedBox(
                 width: 100,
                 child: IntrinsicHeight(
                   child: Row(
@@ -352,14 +352,14 @@ class HomePage extends StatelessWidget {
         child: Container(
           margin: const EdgeInsets.all(10),
           alignment: Alignment.center,
+          decoration: BoxDecoration(
+            color: const Color(0xffF7F8F8),
+            borderRadius: BorderRadius.circular(10)
+          ),
           child: SvgPicture.asset(
             'assets/icons/Arrow - Left 2.svg',
             height: 20,
             width: 20,
-          ),
-          decoration: BoxDecoration(
-            color: const Color(0xffF7F8F8),
-            borderRadius: BorderRadius.circular(10)
           ),
         ),
       ),
@@ -370,14 +370,14 @@ class HomePage extends StatelessWidget {
             margin: const EdgeInsets.all(10),
             alignment: Alignment.center,
             width: 37,
+            decoration: BoxDecoration(
+              color: const Color(0xffF7F8F8),
+              borderRadius: BorderRadius.circular(10)
+            ),
             child: SvgPicture.asset(
               'assets/icons/dots.svg',
               height: 5,
               width: 5,
-            ),
-            decoration: BoxDecoration(
-              color: const Color(0xffF7F8F8),
-              borderRadius: BorderRadius.circular(10)
             ),
           ),
         ),
